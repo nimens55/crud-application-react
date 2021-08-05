@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import { GlobalContext } from "./context/GlobalContext"
+import Button from "./components/Button/Button";
+import UserList from "./components/UserList/UserList";
 
 function App() {
+  const { toggleNewUser } = useContext(GlobalContext)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <div className="container pt-4">
+        <div className="row align-items-center">
+          <div className="col">
+            <h1>CRUD приложение</h1>
+          </div>
+          <div className="col-auto">
+            <Button type="btn-primary" text="Новая запись" buttonHandler={toggleNewUser} />
+          </div>
+        </div>
+        <hr />
+      </div>
+      <div className="container">
+        <UserList />
+      </div>
+    </React.Fragment>
   );
 }
 
